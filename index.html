@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redis Chat</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #messages { list-style-type: none; padding: 0; }
+        #messages li { padding: 10px; background-color: #f1f1f1; margin: 5px 0; }
+        #chat-container { width: 400px; margin: 0 auto; }
+        #message-input { width: 100%; padding: 10px; }
+    </style>
+</head>
+<body>
+<div id="chat-container">
+    <h2>Redis Chat</h2>
+    <ul id="messages"></ul>
+    <input id="message-input" type="text" placeholder="Type a message..." />
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+
+    // Отримуємо історію повідомлень
+    socket.on('chat history', (messages) => {
+        const messagesList = document.getElementById('messages');
+        messages.forEach((msg) => {
+            const messageObj = JSON.parse(msg);
+            const li = document.createElement('li');
+            li.textContent = `[${messageObj.timestamp}] ${messageObj.message}`;
+            messagesList.appendChild(li);
+        });
+    });
+
+    // Отримуємо нові повідомлення
+    socket.on('new message', (data) => {
+        const messagesList = document.getElementById('messages');
+        const li = document.createElement('li');
+        li.textContent = `[${data.timestamp}] ${data.message}`;
+        messagesList.appendChild(li);
+    });
+
+    // Надсилаємо нове повідомлення
+    const input = document.getElementById('message-input');
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && input.value) {
+            socket.emit('new message', input.value);
+            input.value = ''; // очищаємо поле вводу
+        }
+    });
+</script>
+</body>
+</html>
