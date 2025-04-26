@@ -5,7 +5,7 @@ const redis = require('redis');
 
 // Налаштування Redis клієнта
 const redisClient = redis.createClient({
-    url: 'redis://default:AXJ2AAIjcDFjMjJhMDVmMzZmZDA0M2IyYjE2MDQ0M2QzMGVhYWI1NHAxMA@allowed-hermit-29302.upstash.io:6379',
+    url: 'https://allowed-hermit-29302.upstash.io',
     password: 'AXJ2AAIjcDFjMjJhMDVmMzZmZDA0M2IyYjE2MDQ0M2QzMGVhYWI1NHAxMA'   // Вставити токен
 });
 
