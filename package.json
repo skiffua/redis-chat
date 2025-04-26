@@ -1,0 +1,19 @@
+{
+  "name": "redis-chat",
+  "version": "1.0.0",
+  "description": "Simple Redis-based chat using Upstash, Express, and Socket.IO",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "redis": "^4.6.7",
+    "socket.io": "^4.7.2"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "author": "",
+  "license": "MIT"
+}
