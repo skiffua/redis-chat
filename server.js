@@ -5,8 +5,8 @@ const redis = require('redis');
 
 // Налаштування Redis клієнта
 const redisClient = redis.createClient({
-    url: 'rediss://default:AXJ2AAIjcDFjMjJhMDVmMzZmZDA0M2IyYjE2MDQ0M2QzMGVhYWI1NHAxMA@allowed-hermit-29302.upstash.io:6379',
-    password: 'AXJ2AAIjcDFjMjJhMDVmMzZmZDA0M2IyYjE2MDQ0M2QzMGVhYWI1NHAxMA'   // Вставити токен
+    url: 'rediss://default:AUTpAAIncDE3MGE3NmIzZDU3MjM0YTAyOTZkNjNjZDFhOGIzZDU0OHAxMTc2NDE@premium-mite-17641.upstash.io:6379',
+    password: 'AUTpAAIncDE3MGE3NmIzZDU3MjM0YTAyOTZkNjNjZDFhOGIzZDU0OHAxMTc2NDE'   // Вставити токен
 });
 
 redisClient.connect()
